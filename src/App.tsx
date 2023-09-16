@@ -1,7 +1,8 @@
 import "./App.css";
+import Home from "./Pages/Home";
 
 function App() {
-  return <>Empty Project</>;
+  return <Home />;
 }
 
 export default App;
