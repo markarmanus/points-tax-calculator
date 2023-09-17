@@ -16,6 +16,7 @@ const RadioGroupContainer = styled.div`
   justify-content: center;
   align-items: center;
   margin: 10px;
+  width: max-content;
 `;
 
 const RadioGroupLabel = styled.label`
