@@ -41,7 +41,7 @@ const LabeledInput = memo(function LabeledInput(props: LabeledInputProps) {
       const value = event?.target?.value;
       if (value !== undefined) {
         onChange(value);
-        setShowError(!validator(value));
+        if (validator) setShowError(!validator(value));
       }
     },
     [onChange, validator]
@@ -51,7 +51,7 @@ const LabeledInput = memo(function LabeledInput(props: LabeledInputProps) {
     <OuterContainer>
       <InnerContainer>
         <Label>{props.label}:</Label>
-        <input placeholder={props.placeholder} value={props.value} type={props.type} onChange={onChangeHandler} />
+        <input placeholder={props.placeholder} type={props.type} onChange={onChangeHandler} />
       </InnerContainer>
       {showError && <ErrorContainer>{props.errorMessage}</ErrorContainer>}
     </OuterContainer>
