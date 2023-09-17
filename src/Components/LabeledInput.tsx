@@ -4,12 +4,11 @@ import COLORS from "../Constants/Colors";
 
 interface LabeledInputProps {
   label: string;
-  validator: (itemValue: string) => boolean;
   onChange: (itemValue: string) => void;
-  errorMessage: string;
-  placeholder?: string;
-  value?: string;
   type: HTMLInputTypeAttribute;
+  validator?: (itemValue: string) => boolean;
+  errorMessage?: string;
+  placeholder?: string;
 }
 const OuterContainer = styled.div`
   margin: 10px;
