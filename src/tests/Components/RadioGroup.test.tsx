@@ -19,6 +19,7 @@ describe("RadioGroup", () => {
   };
   beforeEach(() => {
     cleanup();
+    onChangeMock.mockClear();
   });
 
   test("Renders Options Properly", () => {
