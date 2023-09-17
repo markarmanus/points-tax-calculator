@@ -2,40 +2,39 @@
 /// <reference lib="dom.iterable" />
 
 import { test, describe, mock, expect, beforeEach } from "bun:test";
-import { render, screen, fireEvent, cleanup } from "@testing-library/react";
+import { render, screen, cleanup, fireEvent } from "@testing-library/react";
 import Button from "../../Components/Button";
-import COPY from "../../Constants/Copy";
 
 describe("Button", () => {
   beforeEach(() => {
     cleanup();
   });
 
-  test("Renders Text Prop", async () => {
-    render(<Button text={COPY.Submit} />);
-    screen.getByText(COPY.Submit);
+  test("Renders Text Prop", () => {
+    render(<Button text={"Test"} />);
+    screen.getByText("Test");
     cleanup();
     expect(() => {
-      screen.getByText(COPY.Submit);
+      screen.getByText("Test");
     }).toThrow();
   });
 
-  test("Runs OnClick Function when Clicking", async () => {
+  test("Runs OnClick Function when Clicking", () => {
     const onClickMock = mock(() => {});
-    render(<Button text={COPY.Submit} onClick={onClickMock} />);
-    fireEvent.click(screen.getByText(COPY.Submit));
+    render(<Button text={"Test"} onClick={onClickMock} />);
+    fireEvent.click(screen.getByText("Test"));
     expect(onClickMock).toHaveBeenCalled();
   });
 
-  test("Respects Container Style Prop", async () => {
+  test("Respects Container Style Prop", () => {
     const containerStyle = { backgroundColor: "red" };
-    render(<Button text={COPY.Submit} containerStyle={containerStyle} />);
-    expect(screen.getByText(COPY.Submit).parentElement?.style.backgroundColor).toEqual("red");
+    render(<Button text={"Test"} containerStyle={containerStyle} />);
+    expect(screen.getByText("Test").parentElement?.style.backgroundColor).toEqual("red");
   });
 
-  test("Respects Button Style Prop", async () => {
+  test("Respects Button Style Prop", () => {
     const buttonStyle = { color: "red" };
-    render(<Button text={COPY.Submit} buttonStyle={buttonStyle} />);
-    expect(screen.getByText(COPY.Submit).style.color).toEqual("red");
+    render(<Button text={"Test"} buttonStyle={buttonStyle} />);
+    expect(screen.getByText("Test").style.color).toEqual("red");
   });
 });
