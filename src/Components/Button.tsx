@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import COLORS from "../Constants/Colors";
+import { memo } from "react";
 interface ButtonProps {
   text: string;
   onClick?: () => void;
@@ -28,7 +29,7 @@ const StyledButton = styled.button`
   }
 `;
 
-function Button(props: ButtonProps) {
+const Button = memo(function Button(props: ButtonProps) {
   return (
     <ButtonContainer style={props.containerStyle}>
       <StyledButton style={props.buttonStyle} onClick={props.onClick}>
@@ -36,6 +37,6 @@ function Button(props: ButtonProps) {
       </StyledButton>
     </ButtonContainer>
   );
-}
+});
 
 export default Button;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { ChangeEvent, useCallback } from "react";
+import { ChangeEvent, useCallback, memo } from "react";
 
 interface RadioItem {
   text: string;
@@ -30,7 +30,7 @@ const StyledRadioItem = styled.div`
   margin: 3px 0;
 `;
 
-function RadioGroup(props: RadioGroupProps) {
+const RadioGroup = memo(function RadioGroup(props: RadioGroupProps) {
   const { onChange } = props;
   const onChangeHandler = useCallback(
     (event: ChangeEvent<HTMLInputElement>) => onChange(event.target.value),
@@ -49,6 +49,6 @@ function RadioGroup(props: RadioGroupProps) {
       })}
     </RadioGroupContainer>
   );
-}
+});
 
 export default RadioGroup;
