@@ -23,22 +23,24 @@ describe("RadioGroup", () => {
 
   test("Renders Options Properly", () => {
     render(<RadioGroup {...defaultProps} />);
-    screen.getByText("Option1");
-    screen.getByText("Option2");
-    screen.getByText("Option3");
+    screen.getByText(defaultProps.options[0].text);
+    screen.getByText(defaultProps.options[1].text);
+    screen.getByText(defaultProps.options[2].text);
     cleanup();
     expect(() => {
-      screen.getByText("Option4");
+      screen.getByText("DoesNotExist");
     }).toThrow();
   });
 
   test("Runs OnChange Function When Selecting Options", async () => {
     render(<RadioGroup {...defaultProps} />);
-    await userEvent.click(screen.getByText("Option1"));
-    await userEvent.click(screen.getByText("Option2"));
-    await userEvent.click(screen.getByText("Option3"));
+    await userEvent.click(screen.getByText(defaultProps.options[0].text));
+    await userEvent.click(screen.getByText(defaultProps.options[1].text));
+    await userEvent.click(screen.getByText(defaultProps.options[2].text));
     expect(onChangeMock).toHaveBeenCalledTimes(3);
-    expect(onChangeMock.mock.calls).toEqual([["1"], ["2"], ["3"]]);
+
+    const values = defaultProps.options.map((option) => [option.value]);
+    expect(onChangeMock.mock.calls).toEqual(values);
   });
 
   test("Renders Group Label", () => {
