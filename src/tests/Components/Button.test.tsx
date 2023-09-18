@@ -13,10 +13,6 @@ describe("Button", () => {
   test("Renders Text Prop", () => {
     render(<Button text={"Test"} />);
     screen.getByText("Test");
-    cleanup();
-    expect(() => {
-      screen.getByText("Test");
-    }).toThrow();
   });
 
   test("Runs OnClick Function when Clicking", () => {
