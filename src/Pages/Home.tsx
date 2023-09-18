@@ -1,11 +1,12 @@
 import Button from "../Components/Button";
+import LabeledInfo from "../Components/LabeledInfo";
 import LabeledInput from "../Components/LabeledInput";
 import RadioGroup from "../Components/RadioGroup";
 import COPY from "../Constants/Copy";
 
 function Home() {
   return (
-    <div>
+    <div style={{ width: "100%" }}>
       <h2>Tax Calculator</h2>
       <RadioGroup
         groupLabel={COPY.TaxYear}
@@ -27,6 +28,11 @@ function Home() {
         onChange={console.log}
       />
       <Button text={COPY.Submit} />
+      <LabeledInfo label="Bracket of 100 to 20000" info="$434343" />
+      <LabeledInfo label="Bracket of 100 to 20000" info="$434343" />
+      <LabeledInfo label="Bracket of 100 to 20000" info="$434343" />
+      <LabeledInfo label="Bracket of 100 to 20000" info="$434343" />
+      <LabeledInfo label="Bracket of 100 to 20000" info="$434343" />
     </div>
   );
 }
