@@ -5,7 +5,7 @@ import { test, describe, mock, expect, beforeEach } from "bun:test";
 import { render, screen, cleanup, fireEvent } from "@testing-library/react";
 import LabeledInput from "../../Components/LabeledInput";
 
-describe("LabeledInput", () => {
+describe("Test LabeledInput Component", () => {
   const onChangeMock = mock(() => {});
   const validatorMock = mock(() => true);
   const defaultProps = {

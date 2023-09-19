@@ -6,7 +6,7 @@ import { render, screen, cleanup } from "@testing-library/react";
 import RadioGroup from "../../Components/RadioGroup";
 import userEvent from "@testing-library/user-event";
 
-describe("RadioGroup", () => {
+describe("Test RadioGroup Component", () => {
   const onChangeMock = mock(() => {});
   const defaultProps = {
     options: [

@@ -5,7 +5,7 @@ import { test, describe, mock, expect, beforeEach } from "bun:test";
 import { render, screen, cleanup, fireEvent } from "@testing-library/react";
 import Button from "../../Components/Button";
 
-describe("Button", () => {
+describe("Test Button Component", () => {
   beforeEach(() => {
     cleanup();
   });
