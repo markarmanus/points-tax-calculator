@@ -14,7 +14,7 @@ For the application to behave as expected make sure to run the backend server. T
 
 ### Testing
 
-- The application uses bun to test its component, simply run `bun test` to run all tests.
+- The application uses bun to test its components, simply run `bun test` to run all tests.
 
 ### Technology Stack
 
