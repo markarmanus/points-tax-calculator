@@ -21,6 +21,7 @@ const ResultsContainer = styled.div`
 const formatNumber = (num?: number) => {
   return new Intl.NumberFormat("en-US", { style: "currency", currency: "CAD" }).format(num || 0);
 };
+
 const TaxCalculationResult = memo(function TaxCalculationResult(props: TaxCalculationResultProps) {
   const { taxBrackets, income } = props;
   const [taxCalculation, setTaxCalculation] = useState<AllTaxesOwed>();
@@ -28,7 +29,6 @@ const TaxCalculationResult = memo(function TaxCalculationResult(props: TaxCalcul
     if (income && taxBrackets) setTaxCalculation(calculateTaxes(income, taxBrackets));
   }, [taxBrackets, income]);
 
-  console.log(income, taxBrackets);
   return (
     <ResultsContainer>
       {taxCalculation && (

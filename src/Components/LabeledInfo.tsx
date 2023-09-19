@@ -12,7 +12,6 @@ const LabeledInfoContainer = styled.div`
   height: 100%;
   display: flex;
   justify-content: row;
-
   margin: 10px;
 `;
 const InfoContainer = styled.div`

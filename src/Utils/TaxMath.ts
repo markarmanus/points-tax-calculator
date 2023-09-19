@@ -22,12 +22,12 @@ const calculateTaxes = (income: number, brackets: TaxBracket[]): AllTaxesOwed =>
   const taxesByBracket: BracketOwedTaxes[] = [];
   const sortedBrackets = brackets.sort((a, b) => b.min - a.min);
   sortedBrackets.forEach((bracket) => {
-    const owedInBracket: BracketOwedTaxes = getOwedTaxInBracket(remainingIncome, bracket);
+    const owedInBracket = getOwedTaxInBracket(remainingIncome, bracket);
     taxesByBracket.push(owedInBracket);
     remainingIncome = Math.min(bracket.min, remainingIncome);
     totalTax += owedInBracket.owed;
   });
-  const effectiveRate = Number(((totalTax / income) * 100).toFixed(2)) + "%";
+  const effectiveRate = ((totalTax / income) * 100).toFixed(2) + "%";
   const afterTaxIncome = Number((income - totalTax).toFixed(2));
   return { total: totalTax, taxesByBracket, effectiveRate, afterTaxIncome };
 };

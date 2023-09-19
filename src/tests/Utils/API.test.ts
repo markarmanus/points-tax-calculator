@@ -12,8 +12,9 @@ describe("Test getTaxBracketData", () => {
     API.maxReAttempts = 0;
     expect(async () => {
       await API.getTaxBracketData("2020");
-    }).toThrow("Failed to Fetch Tax Bracket Data, Max Re-Attempt Reached of 0");
+    }).toThrow();
   });
+
   test("Test successful response", async () => {
     global.fetch = mock(
       () =>

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import Button from "../../Components/Button";
 import toast from "react-hot-toast";
 import LabeledInput from "../../Components/LabeledInput";
@@ -16,10 +16,10 @@ const yearOptions = [
   { text: "2020", value: "2020" },
   { text: "2021", value: "2021" },
 ];
+
 const Container = styled.div`
   width: 100%;
 `;
-
 const ResultsContainer = styled.div`
   margin-top: 20px;
 `;
@@ -32,8 +32,7 @@ function Home() {
   const [taxBrackets, setTaxBrackets] = useState<TaxBracket[]>();
 
   useEffect(() => {
-    if (year && income && income > 0) setCanSubmit(true);
-    else setCanSubmit(false);
+    setCanSubmit((year && income && income > 0) as boolean);
   }, [year, income]);
 
   const updateIncome = useCallback((income: string) => {
@@ -45,9 +44,9 @@ function Home() {
     setTaxBrackets(undefined);
   }, []);
 
-  const showResults = useCallback(() => {
-    return income && income > 0 && taxBrackets && year;
-  }, [income, year, taxBrackets]);
+  const shouldShowResults = useMemo(() => {
+    return income && income > 0 && taxBrackets && year && !loading;
+  }, [income, year, taxBrackets, loading]);
 
   const onSubmit = useCallback(async () => {
     if (year !== undefined) {
@@ -66,7 +65,7 @@ function Home() {
 
   return (
     <Container>
-      <h2>Tax Calculator</h2>
+      <h2>{COPY.TaxCalculator}</h2>
       <RadioGroup groupLabel={COPY.TaxYear} options={yearOptions} onChange={updateYear} />
       <LabeledInput
         type="number"
@@ -77,11 +76,8 @@ function Home() {
       />
       <Button disabled={!canSubmit} onClick={onSubmit} text={COPY.Submit} />
       <ResultsContainer>
-        {loading ? (
-          <BeatLoader loading={true} color={COLORS.highlight} />
-        ) : showResults() ? (
-          <TaxCalculationResult taxBrackets={taxBrackets} income={income} />
-        ) : null}
+        <BeatLoader loading={loading} color={COLORS.highlight} />
+        {shouldShowResults ? <TaxCalculationResult taxBrackets={taxBrackets} income={income} /> : null}
       </ResultsContainer>
     </Container>
   );

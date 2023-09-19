@@ -23,7 +23,7 @@ class API {
       } catch (error) {
         console.error("Failed to Fetch Tax Bracket Data", error);
         this.reAttemptCounter++;
-        await this.sleep(300);
+        await this.sleep(150);
         return this.getTaxBracketData(year);
       }
     }

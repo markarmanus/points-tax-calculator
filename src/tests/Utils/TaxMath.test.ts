@@ -45,6 +45,7 @@ describe("Test getOwedTaxBracket", () => {
     const actual = getOwedTaxInBracket(income, taxBracketsMock.noMax);
     expect(actual).toEqual(expected);
   });
+
   test("Test with 0 Income", () => {
     const income = 0;
     const expected = { label: "0 - 100", owed: 0 };
@@ -58,12 +59,14 @@ describe("Test getOwedTaxBracket", () => {
     const actual = getOwedTaxInBracket(income, taxBracketsMock.oneHundredRate);
     expect(actual).toEqual(expected);
   });
+
   test("Test with Income Below Range", () => {
     const income = 50;
     const expected = { label: "100 - 200", owed: 0 };
     const actual = getOwedTaxInBracket(income, taxBracketsMock["100to200"]);
     expect(actual).toEqual(expected);
   });
+
   test("Test with Income Inside Range", () => {
     const income = 150;
     const expected = { label: "100 - 200", owed: 10 };
