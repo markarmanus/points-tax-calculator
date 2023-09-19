@@ -72,6 +72,7 @@ function Home() {
         validator={(value) => Number(value) > 0}
         errorMessage={COPY.IncomeMoreThanZero}
         label={COPY.YearlyIncomeInCad}
+        placeholder={COPY.Income}
         onChange={updateIncome}
       />
       <Button disabled={!canSubmit} onClick={onSubmit} text={COPY.Submit} />

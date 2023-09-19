@@ -8,6 +8,7 @@ const COPY = {
   TotalTaxes: "Total Taxes",
   NetIncome: "Net Income",
   EffectiveTaxRate: "Effective Tax Rate",
+  Income: "Income",
 };
 
 export default COPY;

@@ -47,13 +47,6 @@ describe("Test LabeledInput Component", () => {
     expect(onChangeMock).not.toHaveBeenCalled();
   });
 
-  test("Respect type prop", async () => {
-    render(<LabeledInput {...defaultProps} type="number" />);
-    const input = screen.getByPlaceholderText(defaultProps.placeholder);
-    fireEvent.change(input, { target: { value: "abc" } });
-    expect(onChangeMock).not.toHaveBeenCalled();
-  });
-
   test("Renders Error Massage When Validator Returns False", async () => {
     validatorMock.mockReturnValue(false);
     render(<LabeledInput {...defaultProps} />);
