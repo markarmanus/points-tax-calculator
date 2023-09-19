@@ -15,6 +15,7 @@ const yearOptions = [
   { text: "2019", value: "2019" },
   { text: "2020", value: "2020" },
   { text: "2021", value: "2021" },
+  { text: "2022", value: "2022" },
 ];
 
 const Container = styled.div`
