@@ -93,7 +93,7 @@ describe("Test calculateTaxes", () => {
         { label: "200 - 300", owed: 0 },
         { label: "100 - 200", owed: 0 },
       ],
-      effectiveRate: "0%",
+      effectiveRate: "0.00%",
       afterTaxIncome: 50,
     };
     const actual = calculateTaxes(income, taxBracketsArr);
@@ -109,7 +109,7 @@ describe("Test calculateTaxes", () => {
         { label: "200 - 300", owed: 30 },
         { label: "100 - 200", owed: 20 },
       ],
-      effectiveRate: "28%",
+      effectiveRate: "28.00%",
       afterTaxIncome: 360,
     };
     const actual = calculateTaxes(income, taxBracketsArr);
@@ -125,7 +125,7 @@ describe("Test calculateTaxes", () => {
         { label: "200 - 300", owed: 15 },
         { label: "100 - 200", owed: 20 },
       ],
-      effectiveRate: "14%",
+      effectiveRate: "14.00%",
       afterTaxIncome: 215,
     };
     const actual = calculateTaxes(income, taxBracketsArr);
