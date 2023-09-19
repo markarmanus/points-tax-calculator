@@ -59,7 +59,7 @@ function Home() {
       } catch (error) {
         setLoading(false);
         setTaxBrackets(undefined);
-        toast.error("Failed to Fetch Tax Data, Please Try again!", { duration: 2000 });
+        toast.error(COPY.ErrorFetchingTaxData, { duration: 2000 });
       }
     }
   }, [year]);
@@ -71,8 +71,8 @@ function Home() {
       <LabeledInput
         type="number"
         validator={(value) => Number(value) > 0}
-        errorMessage="Income must be greater than 0"
-        label="Yearly Income In CAD"
+        errorMessage={COPY.IncomeMoreThanZero}
+        label={COPY.YearlyIncomeInCad}
         onChange={updateIncome}
       />
       <Button disabled={!canSubmit} onClick={onSubmit} text={COPY.Submit} />

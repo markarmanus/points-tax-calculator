@@ -3,6 +3,7 @@ import { memo, useEffect, useState } from "react";
 import { TaxBracket } from "../../Interfaces/Taxes";
 import { AllTaxesOwed, BracketOwedTaxes, calculateTaxes } from "../../Utils/TaxMath";
 import LabeledInfo from "../../Components/LabeledInfo";
+import COPY from "../../Constants/Copy";
 
 interface TaxCalculationResultProps {
   taxBrackets?: TaxBracket[];
@@ -35,9 +36,9 @@ const TaxCalculationResult = memo(function TaxCalculationResult(props: TaxCalcul
           {taxCalculation.taxesByBracket.map((owedPerBracket: BracketOwedTaxes, index: number) => {
             return <LabeledInfo key={index} label={owedPerBracket.label} info={formatNumber(owedPerBracket.owed)} />;
           })}
-          <LabeledInfo label="Total Taxes" info={formatNumber(taxCalculation.total)} />
-          <LabeledInfo label="Net Income" info={formatNumber(taxCalculation.afterTaxIncome)} />
-          <LabeledInfo label="Effective Rate" info={taxCalculation.effectiveRate.toString()} />
+          <LabeledInfo label={COPY.TotalTaxes} info={formatNumber(taxCalculation.total)} />
+          <LabeledInfo label={COPY.NetIncome} info={formatNumber(taxCalculation.afterTaxIncome)} />
+          <LabeledInfo label={COPY.EffectiveTaxRate} info={taxCalculation.effectiveRate.toString()} />
         </>
       )}
     </ResultsContainer>
