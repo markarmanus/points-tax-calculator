@@ -6,6 +6,7 @@ interface ButtonProps {
   onClick?: () => void;
   containerStyle?: React.CSSProperties;
   buttonStyle?: React.CSSProperties;
+  disabled?: boolean;
 }
 const ButtonContainer = styled.div`
   display: flex;
@@ -22,17 +23,17 @@ const StyledButton = styled.button`
   font-weight: 500;
   font-family: inherit;
   background-color: ${COLORS.primary};
-  cursor: pointer;
+  cursor: ${(props) => (props.disabled ? "default" : "pointer")};
   transition: border-color 0.25s;
   &:hover {
-    border-color: ${COLORS.highlight};
+    border-color: ${(props) => (props.disabled ? "none" : COLORS.highlight)};
   }
 `;
 
 const Button = memo(function Button(props: ButtonProps) {
   return (
     <ButtonContainer style={props.containerStyle}>
-      <StyledButton style={props.buttonStyle} onClick={props.onClick}>
+      <StyledButton disabled={props.disabled} style={props.buttonStyle} onClick={props.onClick}>
         {props.text}
       </StyledButton>
     </ButtonContainer>
