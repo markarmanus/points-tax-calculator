@@ -63,13 +63,17 @@ function Home() {
     }
   }, [year]);
 
+  const validateIncome = useCallback((income: string) => {
+    return Number(income) > 0;
+  }, []);
+
   return (
     <Container>
       <h2>{COPY.TaxCalculator}</h2>
       <RadioGroup groupLabel={COPY.TaxYear} options={yearOptions} onChange={updateYear} />
       <LabeledInput
         type="number"
-        validator={(value) => Number(value) > 0}
+        validator={validateIncome}
         errorMessage={COPY.IncomeMoreThanZero}
         label={COPY.YearlyIncomeInCad}
         placeholder={COPY.Income}
